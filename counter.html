@@ -1,0 +1,62 @@
+<!-- counter.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter</title>
+    <style>
+        .counter {
+            text-align: center;
+            padding: 20px;
+        }
+        .count {
+            font-size: 60px;
+            margin: 20px;
+        }
+        button {
+            font-size: 20px;
+            margin: 5px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <div class="count">0</div>
+        <button id="decrease">-</button>
+        <button id="reset">Reset</button>
+        <button id="increase">+</button>
+        <button id="multiply">*</button>
+    </div>
+
+    <script>
+        // Get elements from the DOM
+        const countDisplay = document.querySelector('.count');
+        const decreaseBtn = document.getElementById('decrease');
+        const resetBtn = document.getElementById('reset');
+        const increaseBtn = document.getElementById('increase');
+        const multiplyBtn = document.getElementById('multiply');
+
+        // Initialize counter
+        let count = 0;
+
+        // Add event listeners
+        decreaseBtn.addEventListener('click', () => {count--, updateDisplay()});
+
+        increaseBtn.addEventListener('click', () => { count++, updateDisplay()});
+
+        resetBtn.addEventListener('click', () => { count = 0, updateDisplay()});
+
+        multiplyBtn.addEventListener('click', () => { count *= 2, updateDisplay()});
+
+
+        // Update the display
+        function updateDisplay() {
+            countDisplay.textContent = count;
+            // Change color based on value
+            if (count > 0) countDisplay.style.color = 'green';
+            else if (count < 0) countDisplay.style.color = 'red';
+            else countDisplay.style.color = 'black';
+        }
+    </script>
+</body>
+</html>
